@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+	<fo:layout-master-set>
+		<fo:simple-page-master master-name="simpleA4"
+			page-height="283" page-width="1132" margin-top="0"
+			margin-bottom="0" margin-left="0" margin-right="0">
+			<fo:region-body />
+		</fo:simple-page-master>
+	</fo:layout-master-set>
+	<fo:page-sequence master-reference="simpleA4">
+		<fo:flow flow-name="xsl-region-body">
+			<fo:block>Hello World!</fo:block>
+			<fo:block>
+				<fo:instream-foreign-object>
+					<barcode:barcode
+						xmlns:barcode="http://barcode4j.krysalis.org/ns"
+						message="122334545656" orientation="0">
+						<barcode:code128>
+							<barcode:width>20cm</barcode:width>
+							<barcode:height>8mm</barcode:height>
+							<barcode:human-readable>bottom</barcode:human-readable>
+						</barcode:code128>
+					</barcode:barcode>
+				</fo:instream-foreign-object>
+			</fo:block>
+			<fo:block>
+				<fo:instream-foreign-object
+					content-width="scale-to-fit" content-height="scale-to-fit"
+					width="200px">
+					<bc:barcode xmlns:bc="http://crossroad.org/fop/barcode/"
+						type="code128" correction="l" message="122334545656">
+						<bc:message labeled="true" vpos="bottom"
+							hpos="centered" />
+						<bc:size width="72mm" height="8mm" orientation="0" />
+						<!-- <bc:hints> <bc:hint name="" value="" /> </bc:hints> -->
+					</bc:barcode>
+				</fo:instream-foreign-object>
+			</fo:block>
+		</fo:flow>
+	</fo:page-sequence>
+</fo:root>
